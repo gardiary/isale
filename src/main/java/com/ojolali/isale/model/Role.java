@@ -2,6 +2,7 @@ package com.ojolali.isale.model;
 
 import java.util.HashSet;
 import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,10 +14,10 @@ import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
+
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
 
 /**
  *

@@ -1,6 +1,5 @@
 package com.ojolali.isale.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,17 +10,15 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.GenericGenerator;
 
-/**
- *
- * @author Ivans
- */
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity 
 @Table(name = "c_security_user")
 public class User {
