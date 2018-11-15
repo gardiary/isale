@@ -1,4 +1,4 @@
-package com.ojolali.isale.controller;
+package com.ojolali.isale.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +11,7 @@ import com.ojolali.isale.dao.UserDao;
 import com.ojolali.isale.model.User;
 
 @RestController
+@RequestMapping("/api")
 public class ApiController {
 	
 	private final Logger logger = LoggerFactory.getLogger(ApiController.class);
@@ -18,7 +19,7 @@ public class ApiController {
 	@Autowired
 	private UserDao userDao;
 	
-	@RequestMapping(value="api/inserUser", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(value="inserUser", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public User getDate() {
 		User user=new User();
 		user.setUsername("Test");
