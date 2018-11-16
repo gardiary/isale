@@ -1,11 +1,11 @@
 package com.ojolali.isale.model;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -29,8 +29,20 @@ public class Order {
     @Getter @Setter
     private String name;
     
-    @NotNull
-    @Column(name = "transactionDate")
+//    @NotNull
+    @Column(name = "quantity")
     @Getter @Setter
-    private Date transactionDate;
+    private Long quantity;
+
+//    @NotNull
+    @Column(name = "total_price")
+    @Getter @Setter
+    private Double totalPrice;
+
+    @ManyToOne
+//    @NotNull
+    @JoinColumn(name ="employee_id")
+    private Employee employee;
+    
+
 }

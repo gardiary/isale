@@ -7,8 +7,8 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ojolali.isale.dao.UserDao;
-import com.ojolali.isale.model.User;
+import com.ojolali.isale.dao.EmployeeDao;
+import com.ojolali.isale.model.Employee;
 
 @RestController
 @RequestMapping("/api")
@@ -17,14 +17,13 @@ public class ApiController {
 	private final Logger logger = LoggerFactory.getLogger(ApiController.class);
 	
 	@Autowired
-	private UserDao userDao;
+	private EmployeeDao employeeDao;
 	
-	@RequestMapping(value="inserUser", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public User getDate() {
-		User user=new User();
-		user.setUsername("Test");
-		userDao.save(user);
-		return user;
+	@RequestMapping(value="getEmployee", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public Iterable<Employee> getEmployee() {
+		logger.info("Get Employee");
+		Iterable<Employee>  employees=employeeDao.findAll();
+		return employees;
 	}
 
 	

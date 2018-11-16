@@ -12,9 +12,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -44,7 +42,12 @@ public class Employee {
     @Column(name = "address")
     @Getter @Setter
     private String address;
-    
+
+
+    @Column(name = "staffRole")
+    @Getter @Setter
+    private String staffRole;
+
 
     @Column(name = "phone_no")
     @Getter @Setter
@@ -71,7 +74,7 @@ public class Employee {
     @Column(name = "birth_place")
     private String birthPlace;
 
-    @Past
+//    @Past
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     @Temporal(TemporalType.DATE)
     @Getter @Setter

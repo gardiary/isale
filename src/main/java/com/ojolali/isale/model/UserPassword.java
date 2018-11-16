@@ -11,8 +11,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -34,7 +32,6 @@ public class UserPassword implements Serializable {
     private User user;
 
     @NotNull
-    @NotEmpty
     @Column
     @Getter @Setter
     private String password;

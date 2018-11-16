@@ -5,36 +5,52 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
-@Table(name = "c_security_permission")
-public class Permission {
+@Table(name="customers")
+@ToString
+public class Customer {
+	/**
+Payment_method (Cash/Credit Card)
+Payment_status (Paid/Unpaid)
+	 */
+	
     @Id
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid2")
     @Getter @Setter
     private String id;
 
+    
     @NotNull
-    @Column(name = "permission_label", nullable = false, unique = false)
+    @Column(name = "name")
     @Getter @Setter
-    private String label;
+    private String name;
 
-    @NotNull
-    @Column(name = "permission_value", nullable = false, unique = true)
+
+    @Column(name = "address")
     @Getter @Setter
-    private String value;
+    private String address;
+    
 
-    @Override
-    public String toString() {
-        return value;
-    }
+    @Column(name = "phone_no")
+    @Getter @Setter
+    private String phoneNo;
+    
 
+
+    @Email
+    @Getter @Setter
+    @Column( unique = true)
+    private String email;
+
+    
 }
-

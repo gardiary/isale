@@ -6,19 +6,27 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.ojolali.isale.dao.EmployeeDao;
 import com.ojolali.isale.model.Employee;
 
 
+
+/**
+ * @author mwiyono
+ */
 @Controller
 public class EmployeeController {
 	private final Logger logger = LoggerFactory.getLogger(EmployeeController.class);
@@ -56,6 +64,28 @@ public class EmployeeController {
 		}
         status.setComplete();
         logger.info("Finish {} ",employee);
+        return "redirect:/employee/list";
+    }
+    
+
+    @GetMapping("/employee/delete")
+    public ModelMap deleteConfirm(@RequestParam(value = "id", required = true) Employee employee) {
+        return new ModelMap("employee", employee);
+    }
+
+    @PostMapping("/employee/delete")
+    public Object delete(@ModelAttribute Employee employee, SessionStatus status) {
+        try{
+            employeeDao.delete(employee);
+        } catch (DataIntegrityViolationException exception) {
+            status.setComplete();
+            return new ModelAndView("error/errorHapus")
+                    .addObject("entityId", employee.getId())
+                    .addObject("entityName", "Employee")
+                    .addObject("errorCause", exception.getRootCause().getMessage())
+                    .addObject("backLink","/employee/list");
+        }
+        status.setComplete();
         return "redirect:/employee/list";
     }
 }
