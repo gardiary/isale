@@ -11,19 +11,21 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name="employees")
+@ToString
 public class Employee {
 	
     @Id
@@ -34,24 +36,21 @@ public class Employee {
 
     
     @NotNull
-    @Column(name = "name", nullable = false, unique = true)
+    @Column(name = "name")
     @Getter @Setter
     private String name;
 
 
-    @NotNull
-    @Column(name = "address", nullable = false)
+    @Column(name = "address")
     @Getter @Setter
     private String address;
     
 
-    @NotNull
-    @Column(name = "phone_no", nullable = false)
+    @Column(name = "phone_no")
     @Getter @Setter
     private String phoneNo;
     
     
-    @NotNull
     @Column(name = "joinedDate")
     @Getter @Setter
     private Date joinedDate;
@@ -63,25 +62,20 @@ public class Employee {
     
 
     @Email
-    @NotNull
-    @NotEmpty
     @Getter @Setter
-    @Column(nullable = false, unique = true)
+    @Column( unique = true)
     private String email;
 
 
-    @NotNull
-    @NotEmpty
     @Getter @Setter
     @Column(name = "birth_place")
     private String birthPlace;
 
-    @NotNull
     @Past
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     @Temporal(TemporalType.DATE)
     @Getter @Setter
-    @Column(name = "birth_date", nullable = false)
+    @Column(name = "birth_date")
     private Date birthDate;
     
     
