@@ -12,7 +12,7 @@ import com.ojolali.isale.model.Employee;
  *
  */
 @Repository
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://posclient.herokuapp.com/")
 public interface EmployeeDao extends PagingAndSortingRepository<Employee, String> {
 //	public Employee findOneByEmail(String email);
 //

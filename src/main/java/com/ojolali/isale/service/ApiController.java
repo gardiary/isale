@@ -13,7 +13,7 @@ import com.ojolali.isale.model.Employee;
 
 @RestController
 @RequestMapping("/api/employee")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://posclient.herokuapp.com/")
 public class ApiController {
 	
 	private final Logger logger = LoggerFactory.getLogger(ApiController.class);
