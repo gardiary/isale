@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -13,8 +15,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name="carts")
-public class Cart {
+@Table(name="sales_trans")
+public class SalesTransaction {
 	
     @Id
     @GeneratedValue(generator = "system-uuid")
@@ -29,19 +31,27 @@ public class Cart {
     private String name;
 
     @NotNull
-    @Column(name = "price", nullable = false, unique = true)
+    @Column(name = "retail_price")
     @Getter @Setter
-    private Double price;
+    private Double retailPrice;
+
 
     @NotNull
-    @Column(name = "image")
+    @Column(name = "wholesale_price")
     @Getter @Setter
-    private String image;
-    
+    private Double wholesalePrice;
+
 
     @NotNull
     @Column(name = "quantity")
     @Getter @Setter
     private Long quantity;
+    
+    
+    @ManyToOne
+    @NotNull
+    @JoinColumn(name = "product_id")
+    private Product product;
+
 
 }
