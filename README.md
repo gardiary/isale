@@ -1,6 +1,6 @@
 # POS app #
 
-All retailt business will beed POS system
+Retail business need POS system
 
 
 ## Roadmap  ##
@@ -8,13 +8,13 @@ All retailt business will beed POS system
 
 * Versi 1.0.0
 
-    * Entri master data
+    * Entry master data
     * Day to day job retail like process transaction
 	
 	
-## Tecnology, Framework, Tools and Platform ##
+## Technology, Framework, Tools and Platform ##
 
-Prerequite for this app
+Prerequisite for this app
 
 * Java 8
 * Maven 3.3.9
@@ -22,7 +22,6 @@ Prerequite for this app
 * Spring Boot 2.1.0.RELEASE
 * Heroku
 
-Cara instalasi Java dan Maven bisa dibaca dengan klik [tautan ini](http://software.endy.muhardin.com/java/persiapan-coding-java/).
 
 ## How to start ##
 
@@ -38,9 +37,6 @@ or download from https://github.com/mujoko/isale/archive/master.zip
 
         mvn clean spring-boot:run
 
-* browse aplikasi ke [http://localhost:10000/](http://localhost:10000
+* browse to [http://localhost:10000/](http://localhost:10000
 
 Development version of this app will be deployed automatically into heroku and this can be access from [https://isale.herokuapp.com](https://isale.herokuapp.com)
-
-
-
