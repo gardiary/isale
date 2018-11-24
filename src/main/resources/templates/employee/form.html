@@ -57,13 +57,17 @@
             </div>
         </div>
 
+        
         <div class="form-group">
-            <label class="col-sm-2 control-label">Birth Date</label>
-            <div class="col-xs-6 col-sm-2">
-                <input type="date" class="form-control" id="birthDateStr"
-                	name="birthDateStr" th:field="*{birthDateStr}" th:pattern="dd-MM-yyyy" placeholder="DD-MM-YYYY" />
+            <label for="template" class="col-sm-2 control-label">Birth Date</label>
+            <div class="col-sm-2">
+                <input type="date"
+                       th:field="*{birthDateStr}"
+                       name="birthDateStr" class="form-control" id=stafbirthDateStrfRole placeholder="Birth Date"/>
+                <label class="control-label" th:errors="*{birthDateStr}">
+                    Error Message
+                </label>
             </div>
-            <label class="control-label error-label" th:errors="*{birthDate}"></label>
         </div>
         
         <div class="form-group">

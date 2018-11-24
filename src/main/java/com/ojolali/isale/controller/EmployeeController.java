@@ -1,22 +1,16 @@
 package com.ojolali.isale.controller;
 
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,11 +34,11 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeDao employeeDao;
 
-	@InitBinder
-	protected void initBinder(WebDataBinder binder) {		
-	    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-	    binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
-	}
+//	@InitBinder
+//	protected void initBinder(WebDataBinder binder) {		
+//	    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+//	    binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
+//	}
 	
     @RequestMapping("/employee/list")
     public ModelMap listAll(){
@@ -55,6 +49,7 @@ public class EmployeeController {
 
     @RequestMapping(value = "/employee/form", method = RequestMethod.GET)
     public ModelMap showForm(@RequestParam(value = "id", required = false) Employee employee) {
+    	logger.info("Prepare Form Employee");
       if (employee == null) {
     	  employee = new Employee();
 	  }

@@ -81,7 +81,7 @@ public class Employee {
     @Getter @Setter
 //    @DateTimeFormat(pattern="dd/MM/yyyy")
 //    @Temporal(TemporalType.DATE)
-    @Column(name = "birth_date")
+    @Column(name = "birth_date_str	")
     private String birthDateStr;
 
     
