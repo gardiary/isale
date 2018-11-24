@@ -14,7 +14,7 @@ import com.ojolali.isale.dao.OrderDao;
 import com.ojolali.isale.model.Order;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/order")
 public class OrderService {
 	
 	
@@ -24,7 +24,7 @@ public class OrderService {
 	@Autowired
 	private OrderDao orderDao;
 	
-	@RequestMapping(value="createOrder", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(value="create", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<Order> create(@RequestBody Order order) {
 		logger.info("Create Order");
 		orderDao.save(order);
