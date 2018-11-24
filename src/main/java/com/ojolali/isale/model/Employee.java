@@ -9,13 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -74,12 +71,18 @@ public class Employee {
     @Column(name = "birth_place")
     private String birthPlace;
 
-//    @Past
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
-    @Temporal(TemporalType.DATE)
+
+//    @Getter @Setter
+////    @DateTimeFormat(pattern="dd/MM/yyyy")
+//    @Temporal(TemporalType.DATE)
+//    @Column(name = "birth_date")
+//    private Date birthDate;
+
     @Getter @Setter
+//    @DateTimeFormat(pattern="dd/MM/yyyy")
+//    @Temporal(TemporalType.DATE)
     @Column(name = "birth_date")
-    private Date birthDate;
-    
+    private String birthDateStr;
+
     
 }

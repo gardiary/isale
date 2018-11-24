@@ -2,13 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="layout" xmlns="http://www.w3.org/1999/html">
 <head>
-    <title>Product Form</title>
+    <title>Sale Transaction Form</title>
 </head>
 <body>
 <div layout:fragment="content">
-    <h1>Product Form</h1>
+    <h1>Sale Transaction Form</h1>
 
-    <form class="form-horizontal" th:object="${product}" method="post">
+    <form class="form-horizontal" th:object="${saleTransaction}" method="post">
         <div class="form-group">
             <label for="nama" class="col-sm-2 control-label">Name</label>
             <div class="col-sm-10">
@@ -22,33 +22,38 @@
         </div>
 
         <div class="form-group">
-            <label for="keterangan" class="col-sm-2 control-label">Price</label>
+            <label for="keterangan" class="col-sm-2 control-label">Retail price</label>
             <div class="col-sm-10">
                 <input type="text"
-                       th:field="*{price}"
-                       name="price" class="form-control" id="price" placeholder="Price"/>
-                <label class="control-label" th:errors="*{price}">
+                       th:field="*{retailPrice}"
+                       name="retailPrice" class="form-control" id="retailPrice" placeholder="Retail Price"/>
+                <label class="control-label" th:errors="*{retailPrice}">
                     Error Message
                 </label>
             </div>
         </div>
-
         <div class="form-group">
-            <label for="template" class="col-sm-2 control-label">Unit</label>
+            <label for="keterangan" class="col-sm-2 control-label">Wholesale price</label>
             <div class="col-sm-10">
-	            <select th:field="*{unitType}">
-				    <option th:value="'Kg'" th:text="Kg"></option>
-				    <option th:value="'Once'" th:text="Once"></option>
-				</select>
-                <label class="control-label" th:errors="*{unitType}">
+                <input type="text"
+                       th:field="*{wholesalePrice}"
+                       name="wholesalePrice" class="form-control" id="wholesalePrice" placeholder="Wholesale Price"/>
+                <label class="control-label" th:errors="*{wholesalePrice}">
+                    Error Message
                 </label>
-
             </div>
         </div>
-
-
-
-
+        <div class="form-group">
+            <label for="keterangan" class="col-sm-2 control-label">Quantity</label>
+            <div class="col-sm-10">
+                <input type="text"
+                       th:field="*{quantity}"
+                       name="quantity" class="form-control" id="quantity" placeholder="Quantity"/>
+                <label class="control-label" th:errors="*{quantity}">
+                    Error Message
+                </label>
+            </div>
+        </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <a th:href="@{/product/list}" class="btn btn-default" role="button">

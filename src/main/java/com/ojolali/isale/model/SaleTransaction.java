@@ -15,8 +15,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name="sales_trans")
-public class SalesTransaction {
+@Table(name="sale_trans")
+public class SaleTransaction {
 	
     @Id
     @GeneratedValue(generator = "system-uuid")
@@ -49,7 +49,7 @@ public class SalesTransaction {
     
     
     @ManyToOne
-    @NotNull
+//    @NotNull
     @JoinColumn(name = "product_id")
     private Product product;
 

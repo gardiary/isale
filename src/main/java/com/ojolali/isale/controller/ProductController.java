@@ -79,7 +79,7 @@ public class ProductController {
             productDao.delete(product);
         } catch (DataIntegrityViolationException exception) {
             status.setComplete();
-            return new ModelAndView("error/errorHapus")
+            return new ModelAndView("error/errorDelete")
                     .addObject("entityId", product.getId())
                     .addObject("entityName", "Product")
                     .addObject("errorCause", exception.getRootCause().getMessage())

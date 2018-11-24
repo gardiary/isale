@@ -1,16 +1,22 @@
 package com.ojolali.isale.controller;
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,8 +40,14 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeDao employeeDao;
 
+	@InitBinder
+	protected void initBinder(WebDataBinder binder) {		
+	    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+	    binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
+	}
+	
     @RequestMapping("/employee/list")
-    public ModelMap daftarDosen(){
+    public ModelMap listAll(){
     	ModelMap modelMap = new ModelMap();
         modelMap.addAttribute("employee", employeeDao.findAll());
       return modelMap;
@@ -79,7 +91,7 @@ public class EmployeeController {
             employeeDao.delete(employee);
         } catch (DataIntegrityViolationException exception) {
             status.setComplete();
-            return new ModelAndView("error/errorHapus")
+            return new ModelAndView("error/errorDelete")
                     .addObject("entityId", employee.getId())
                     .addObject("entityName", "Employee")
                     .addObject("errorCause", exception.getRootCause().getMessage())

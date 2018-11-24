@@ -1,8 +1,11 @@
 package com.ojolali.isale;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import nz.net.ultraq.thymeleaf.LayoutDialect;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
@@ -13,11 +16,11 @@ public class WebConfig implements WebMvcConfigurer {
 		registry.addMapping("/**").
 		allowedOrigins("https://posclient.herokuapp.com");
 	}
-//
-//	 @Autowired
-//	 private Environment env;
-//
-//
+	
+	@Bean
+	public LayoutDialect layoutDialect() {
+	    return new LayoutDialect();
+	}
 //	@Bean
 //    public WebMvcConfigurer corsConfigurer() {
 //        return new WebMvcConfigurer() {

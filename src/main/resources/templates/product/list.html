@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorator="layout" xmlns="http://www.w3.org/1999/html">
+      layout:decorate="layout" xmlns="http://www.w3.org/1999/html">
 <head>
 	<title>Product</title>
 	<script language="JavaScript">
@@ -57,7 +57,7 @@
 		            <td th:text="${st.price}">Price</td>
 		            <td th:text="${st.unitType}">Unit</td>
 					<td>
-						<a href="#" class="btn btn-info" th:href="@{/product/form(id=${st.id})}" title="edit jenis kendaraan"><span class="glyphicon glyphicon-edit"></span></a>
+						<a href="#" class="btn btn-info" th:href="@{/product/form(id=${st.id})}" title="edit Data"><span class="glyphicon glyphicon-edit"></span></a>
 						<a href="#" class="btn btn-info" th:href="@{/product/delete(id=${st.id})}" title="delete logic"><span class="glyphicon glyphicon-remove-circle remove-data"></span></a>
 					</td>
 				</tr>

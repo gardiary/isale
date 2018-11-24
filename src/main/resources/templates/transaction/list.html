@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="layout" xmlns="http://www.w3.org/1999/html">
-      
 <head>
-	<title>Employee</title>
+	<title>SaleTransaction</title>
 	<script language="JavaScript">
 	    $(document).ready(function(){
 	        $(".remove-data").each(function(){
@@ -17,10 +16,10 @@
 </head>
 <body>
 	<div layout:fragment="breadcrumb">
-      <h1>Employee List</h1>
+      <h1>SaleTransaction List</h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Employee List</li>
+        <li class="active">SaleTransaction List</li>
       </ol>	
 	</div>
 	<div layout:fragment="content">	
@@ -28,9 +27,9 @@
 		<div class="col-xs-12">
 		<div class="box">
             <div class="box-header with-border">
-              <a class="box-title btn btn-primary" th:href="@{/employee/form}">Add Employee</a>
+              <a class="box-title btn btn-primary" th:href="@{/transaction/form}">Add SaleTransaction</a>
               <div class="box-tools">
-                <form id="form" action="#" method="get" th:action="@{/employee/search}">
+                <form id="form" action="#" method="get" th:action="@{/transaction/search}">
                 <div class="input-group input-group-sm" style="width: 150px;">
                   <input type="text" name="value" class="form-control pull-right" placeholder="Search"/>
                   <input type="hidden" name="mode" id="mode"/>
@@ -48,18 +47,18 @@
                 <tr>
 		            <th>No.</th>
 		            <th>Name</th>
-		            <th>Address</th>
-		            <th>Phone No</th>
+		            <th>Retail Price</th>
+		            <th>Wholesale Price</th>
 					<th>&nbsp;</th>
                 </tr>
-		        <tr th:each="st,iter : ${employee}">
+		        <tr th:each="st,iter : ${saleTransaction}">
 		            <td th:text="${iter.count}">1</td>
 		            <td th:text="${st.name}">Name</td>
-		            <td th:text="${st.address}">Address</td>
-		            <td th:text="${st.phoneNo}">Phone No</td>
+		            <td th:text="${st.retailPrice}">Price</td>
+		            <td th:text="${st.wholesalePrice}">Wholesale Price</td>
 					<td>
-						<a href="#" class="btn btn-info" th:href="@{/employee/form(id=${st.id})}" title="edit Data"><span class="glyphicon glyphicon-edit"></span></a>
-						<a href="#" class="btn btn-info" th:href="@{/employee/delete(id=${st.id})}" title="delete logic"><span class="glyphicon glyphicon-remove-circle remove-data"></span></a>
+						<a href="#" class="btn btn-info" th:href="@{/transaction/form(id=${st.id})}" title="edit Data"><span class="glyphicon glyphicon-edit"></span></a>
+						<a href="#" class="btn btn-info" th:href="@{/transaction/delete(id=${st.id})}" title="delete logic"><span class="glyphicon glyphicon-remove-circle remove-data"></span></a>
 					</td>
 				</tr>
               </tbody>

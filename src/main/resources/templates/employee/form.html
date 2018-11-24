@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorator="layout" xmlns="http://www.w3.org/1999/html">
+      layout:decorate="~{layout}" xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Employer Form</title>
 </head>
@@ -57,7 +57,15 @@
             </div>
         </div>
 
-
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Birth Date</label>
+            <div class="col-xs-6 col-sm-2">
+                <input type="date" class="form-control" id="birthDateStr"
+                	name="birthDateStr" th:field="*{birthDateStr}" th:pattern="dd-MM-yyyy" placeholder="DD-MM-YYYY" />
+            </div>
+            <label class="control-label error-label" th:errors="*{birthDate}"></label>
+        </div>
+        
         <div class="form-group">
             <label for="template" class="col-sm-2 control-label">Staff Role</label>
             <div class="col-sm-10">
@@ -69,6 +77,7 @@
                 </label>
             </div>
         </div>
+
 
 
         <div class="form-group">
