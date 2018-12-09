@@ -21,17 +21,7 @@ public class WebConfig implements WebMvcConfigurer {
 	public LayoutDialect layoutDialect() {
 	    return new LayoutDialect();
 	}
-//	@Bean
-//    public WebMvcConfigurer corsConfigurer() {
-//        return new WebMvcConfigurer() {
-//            @Override
-//            public void addCorsMappings(CorsRegistry registry) {
-//                String urls = env.getProperty("cors.urls");
-//                CorsRegistration reg = registry.addMapping("/api/**");
-//                for(String url: urls.split(",")) {
-//                    reg.allowedOrigins(url);
-//                }
-//            }
-//        };
-//    }
+
+	
+
 }
