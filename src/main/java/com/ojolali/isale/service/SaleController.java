@@ -24,10 +24,9 @@ import io.swagger.annotations.ApiOperation;
 @RestController
 @CrossOrigin(origins = "https://posclient.herokuapp.com/")
 @RequestMapping("api/transactions")
-public class ApiController {
+public class SaleController {
 	
-	private final Logger logger = LoggerFactory.getLogger(ApiController.class);
-
+	private final Logger logger = LoggerFactory.getLogger(SaleController.class);
 	
 
 	@Autowired
