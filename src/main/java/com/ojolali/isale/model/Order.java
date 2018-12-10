@@ -29,19 +29,17 @@ public class Order {
     @Getter @Setter
     private String name;
     
-//    @NotNull
     @Column(name = "quantity")
     @Getter @Setter
     private Long quantity;
 
-//    @NotNull
     @Column(name = "total_price")
     @Getter @Setter
     private Double totalPrice;
 
     @ManyToOne
-//    @NotNull
     @JoinColumn(name ="employee_id")
+    @Getter @Setter
     private Employee employee;
     
 

@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,19 +33,12 @@ public class SaleController {
 	@Autowired
 	private SaleTransactionDao saleTransactionDao;
 	
-	
-//	@RequestMapping(value="", method = RequestMethod.GET, produces = {"application/json"})
-//	public Iterable<Employee> getEmployee() {
-//		logger.info("Get Employee");
-//		Iterable<Employee>  employees=employeeDao.findAll();
-//		return employees;
-//	}
 
 
 	
 	@ApiOperation(value = "Retrieve a list of transaction.",
 			responseContainer = "List")
-	@RequestMapping(method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@GetMapping(produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public Iterable<SaleTransaction> getSaleTransaction() {
 		logger.info("Get SaleTransaction");
 		Iterable<SaleTransaction>  saleTransaction=saleTransactionDao.findAll();
@@ -59,7 +53,7 @@ public class SaleController {
 		return new ResponseEntity<SaleTransaction>(order, HttpStatus.OK);
 	}
 	
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = {"application/json"})
+	@GetMapping(value = "/{id}", produces = {"application/json"})
     public @ResponseBody
     SaleTransaction singleOrder(@PathVariable String id) {
     	logger.debug("Received request to list a specific order");
