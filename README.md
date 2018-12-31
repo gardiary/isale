@@ -37,6 +37,27 @@ or download from https://github.com/mujoko/isale/archive/master.zip
 
         mvn clean spring-boot:run
 
-* browse to [http://localhost:10000/](http://localhost:10000
+* browse to [http://localhost:10000/](http://localhost:10000)
+* fOR RestFull can test using Swagger [http://localhost:10000/swagger-ui.html](http://localhost:10000/swagger-ui.html)
 
-Development version of this app will be deployed automatically into heroku and this can be access from [https://isale.herokuapp.com](https://isale.herokuapp.com)
+Development version of this app will be deployed automatically into heroku and this can be access from [https://isale.herokuapp.com](https://isale.herokuapp.com) and Test for REST https://isale.herokuapp.com/swagger-ui.html
+
+
+## Dockerize the app ##
+
+* Start the container; Name of the container is sbapp
+* run this command below in terminal
+
+        docker run -tid -p 10000:10000 --name sbapp springboot-app:latest
+
+* Access the logs in terminal
+        docker ps -qa
+
+* Once started, open the REST client, and test the preceding RESTful  using SWAGGER UI
+		http://localhost:10000/swagger-ui.html		
+		
+* and the app can be access trought browser at
+
+		http://localhost:10000/
+
+
